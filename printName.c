@@ -7,6 +7,6 @@
 #include<stdio.h>
 
 int main(int argc, char **argv){
-	printf("Joseph Mueller");
+	printf("Joseph Mueller, and Gerson Uriarte");
 return 0;
 }
