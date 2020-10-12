@@ -1,0 +1,370 @@
+Breakpoint 1 at 0x4005db: file threadRace.c, line 20.
+Breakpoint 2 at 0x400600: file threadRace.c, line 22.
+Breakpoint 3 at 0x400607: file threadRace.c, line 25.
+Breakpoint 4 at 0x40062c: file threadRace.c, line 27.
+Breakpoint 5 at 0x40066c: file threadRace.c, line 36.
+Breakpoint 6 at 0x400696: file threadRace.c, line 38.
+Breakpoint 7 at 0x4006d1: file threadRace.c, line 41.
+Breakpoint 8 at 0x4006f2: file threadRace.c, line 42.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 5, main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff77fc700 (LWP 57493)]
+
+Thread 1 "threadRace" hit Breakpoint 6, main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff6ffb700 (LWP 57494)]
+[Switching to Thread 0x7ffff6ffb700 (LWP 57494)]
+
+Thread 3 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+  Id   Target Id                                      Frame 
+  1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:36
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+* 3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+
+Thread 1 "threadRace" hit Breakpoint 5, main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff67fa700 (LWP 57496)]
+
+Thread 1 "threadRace" hit Breakpoint 6, main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:38
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff5ff9700 (LWP 57497)]
+[Switching to Thread 0x7ffff5ff9700 (LWP 57497)]
+
+Thread 5 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+
+Thread 1 "threadRace" hit Breakpoint 5, main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:36
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:25
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff57f8700 (LWP 57498)]
+
+Thread 1 "threadRace" hit Breakpoint 6, main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+[New Thread 0x7ffff4ff7700 (LWP 57499)]
+[Switching to Thread 0x7ffff4ff7700 (LWP 57499)]
+
+Thread 7 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+  Id   Target Id                                      Frame 
+  1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:36
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:25
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:20
+* 7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:25
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+
+Thread 1 "threadRace" hit Breakpoint 5, main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:36
+36				pthread_create(&thread[i], NULL, (void *) MyCounterPlus, NULL);
+[New Thread 0x7ffff47f6700 (LWP 57500)]
+
+Thread 1 "threadRace" hit Breakpoint 6, main () at threadRace.c:38
+38				pthread_create(&thread[i], NULL, (void *) MyCounterMinus, NULL);
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:38
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:25
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:20
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:25
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:20
+Missing separate debuginfos, use: zypper install glibc-debuginfo-2.26-lp151.19.19.1.x86_64
+Continuing.
+[New Thread 0x7ffff3ff5700 (LWP 57577)]
+[Switching to Thread 0x7ffff3ff5700 (LWP 57577)]
+
+Thread 9 "threadRace" hit Breakpoint 3, MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:41
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:25
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:20
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:25
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:20
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:25
+$1 = 0
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" main () at threadRace.c:41
+  2    Thread 0x7ffff77fc700 (LWP 57493) "threadRace" MyCounterPlus () at threadRace.c:20
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:25
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:20
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:25
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:20
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:25
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:20
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:25
+[Switching to thread 2 (Thread 0x7ffff77fc700 (LWP 57493))]
+#0  MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 2 "threadRace" hit Breakpoint 1, MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+$2 = 0
+Continuing.
+
+Thread 2 "threadRace" hit Breakpoint 2, MyCounterPlus () at threadRace.c:22
+22			}
+$3 = 2000000
+[Switching to thread 3 (Thread 0x7ffff6ffb700 (LWP 57494))]
+#0  MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 3 "threadRace" hit Breakpoint 4, MyCounterMinus () at threadRace.c:27
+27			}
+$4 = 0
+[Switching to thread 4 (Thread 0x7ffff67fa700 (LWP 57496))]
+#0  MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 4 "threadRace" hit Breakpoint 1, MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+$5 = 0
+Continuing.
+
+Thread 4 "threadRace" hit Breakpoint 2, MyCounterPlus () at threadRace.c:22
+22			}
+$6 = 2000000
+[Switching to thread 5 (Thread 0x7ffff5ff9700 (LWP 57497))]
+#0  MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 5 "threadRace" hit Breakpoint 4, MyCounterMinus () at threadRace.c:27
+27			}
+$7 = 0
+[Switching to thread 6 (Thread 0x7ffff57f8700 (LWP 57498))]
+#0  MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 6 "threadRace" hit Breakpoint 1, MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 6 "threadRace" hit Breakpoint 2, MyCounterPlus () at threadRace.c:22
+22			}
+$8 = 2000000
+[Switching to thread 7 (Thread 0x7ffff4ff7700 (LWP 57499))]
+#0  MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 7 "threadRace" hit Breakpoint 4, MyCounterMinus () at threadRace.c:27
+27			}
+$9 = 0
+[Switching to thread 8 (Thread 0x7ffff47f6700 (LWP 57500))]
+#0  MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 8 "threadRace" hit Breakpoint 1, MyCounterPlus () at threadRace.c:20
+20			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 8 "threadRace" hit Breakpoint 2, MyCounterPlus () at threadRace.c:22
+22			}
+$10 = 2000000
+[Switching to thread 9 (Thread 0x7ffff3ff5700 (LWP 57577))]
+#0  MyCounterMinus () at threadRace.c:25
+25			for(i = 0; i < MAX_COUNT; i++)
+Continuing.
+
+Thread 9 "threadRace" hit Breakpoint 4, MyCounterMinus () at threadRace.c:27
+27			}
+$11 = 0
+[Switching to thread 1 (Thread 0x7ffff7fac740 (LWP 57488))]
+#0  main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+
+Thread 1 "threadRace" received signal SIGINT, Interrupt.
+0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+[Switching to thread 2 (Thread 0x7ffff77fc700 (LWP 57493))]
+#0  MyCounterPlus () at threadRace.c:22
+22			}
+Continuing.
+[Thread 0x7ffff77fc700 (LWP 57493) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  3    Thread 0x7ffff6ffb700 (LWP 57494) "threadRace" MyCounterMinus () at threadRace.c:27
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:22
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:27
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:22
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:27
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 3 (Thread 0x7ffff6ffb700 (LWP 57494))]
+#0  MyCounterMinus () at threadRace.c:27
+27			}
+Continuing.
+[Thread 0x7ffff6ffb700 (LWP 57494) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  4    Thread 0x7ffff67fa700 (LWP 57496) "threadRace" MyCounterPlus () at threadRace.c:22
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:27
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:22
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:27
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 4 (Thread 0x7ffff67fa700 (LWP 57496))]
+#0  MyCounterPlus () at threadRace.c:22
+22			}
+Continuing.
+[Thread 0x7ffff67fa700 (LWP 57496) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  5    Thread 0x7ffff5ff9700 (LWP 57497) "threadRace" MyCounterMinus () at threadRace.c:27
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:22
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:27
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 5 (Thread 0x7ffff5ff9700 (LWP 57497))]
+#0  MyCounterMinus () at threadRace.c:27
+27			}
+Continuing.
+[Thread 0x7ffff5ff9700 (LWP 57497) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  6    Thread 0x7ffff57f8700 (LWP 57498) "threadRace" MyCounterPlus () at threadRace.c:22
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:27
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 6 (Thread 0x7ffff57f8700 (LWP 57498))]
+#0  MyCounterPlus () at threadRace.c:22
+22			}
+Continuing.
+[Thread 0x7ffff57f8700 (LWP 57498) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  7    Thread 0x7ffff4ff7700 (LWP 57499) "threadRace" MyCounterMinus () at threadRace.c:27
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 7 (Thread 0x7ffff4ff7700 (LWP 57499))]
+#0  MyCounterMinus () at threadRace.c:27
+27			}
+Continuing.
+[Thread 0x7ffff4ff7700 (LWP 57499) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  8    Thread 0x7ffff47f6700 (LWP 57500) "threadRace" MyCounterPlus () at threadRace.c:22
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 8 (Thread 0x7ffff47f6700 (LWP 57500))]
+#0  MyCounterPlus () at threadRace.c:22
+22			}
+Continuing.
+[Thread 0x7ffff47f6700 (LWP 57500) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+  9    Thread 0x7ffff3ff5700 (LWP 57577) "threadRace" MyCounterMinus () at threadRace.c:27
+[Switching to thread 9 (Thread 0x7ffff3ff5700 (LWP 57577))]
+#0  MyCounterMinus () at threadRace.c:27
+27			}
+Continuing.
+[Thread 0x7ffff3ff5700 (LWP 57577) exited]
+No unwaited-for children left.
+  Id   Target Id                                      Frame 
+* 1    Thread 0x7ffff7fac740 (LWP 57488) "threadRace" 0x00007ffff7bc18bd in pthread_join () from /lib64/libpthread.so.0
+No symbol "myName" in current context.
+Single stepping until exit from function pthread_join,
+which has no line number information.
+main () at threadRace.c:40
+40		for (i = 0; i < NUMBER_OF_THREADS; i++)
+$12 = 0x7fffffffe100 "Gerson Uriarte"
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+40		for (i = 0; i < NUMBER_OF_THREADS; i++)
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+40		for (i = 0; i < NUMBER_OF_THREADS; i++)
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+$13 = 3
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+$14 = 4
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 7, main () at threadRace.c:41
+41			pthread_join(thread[i], NULL);
+$15 = 7
+Continuing.
+
+Thread 1 "threadRace" hit Breakpoint 8, main () at threadRace.c:42
+42		printf ("sharedCounter = %d\n", sharedCounter);
+$16 = 0x7fffffffe100 "Gerson Uriarte"
+Continuing.
+[Inferior 1 (process 57488) exited normally]
